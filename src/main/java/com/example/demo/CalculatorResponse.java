@@ -2,40 +2,24 @@ package com.example.demo;
 
 import java.util.Date;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+public class CalculatorResponse {
+    int _x;
+    int _y;
+    int _result;
+    String _time;
 
-
-
-@RestController
-public class CalcController {
- 
-	@GetMapping("ping")
-    public String ping() {
-        return "Welcome to Java Web App!!! This is updated!\n" + new Date().toString();
+    public CalculatorResponse(int x, int y, int result) {
+        _x = x;
+        _y = y;
+        _result = result;
+        _time = new Date().toString();
     }
 
-	@GetMapping("add")
-    public CalculatorResponse Add(@RequestParam("x") int x, @RequestParam("y") int y) {
-        return new CalculatorResponse(x, y, x + y);
-    }
+    public int getX() { return _x; }
 
-	@GetMapping("sub")
-    public CalculatorResponse Sub(@RequestParam("x") int x, @RequestParam("y") int y) {
-        return new CalculatorResponse(x, y, x - y);
-    }
+    public int getY() { return _y; }
 
-	@GetMapping("Mul")
-    public CalculatorResponse Mul(@RequestParam("x") int x, @RequestParam("y") int y) {
-        return new CalculatorResponse(x, y, x * y);
-    }
+    public int getResult() { return _result; }
 
-	@GetMapping("div")
-    public CalculatorResponse Div(@RequestParam("x") int x, @RequestParam("y") int y) {
-        return new CalculatorResponse(x, y, x / y);
-    }
-
-
+    public String getTime() { return _time; }
 }
